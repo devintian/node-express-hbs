@@ -1,0 +1,67 @@
+<section class="hero is-warning">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                Hungry for Burgers?
+            </h1>
+            <h2 class="subtitle">
+                Order your burgers and devour them!
+            </h2>
+        </div>
+        <div class="field">
+            <label class="label">Enter the Burger Name:</label>
+            <div class="control">
+                <input class="input burgerName" type="text" placeholder="Burger Name">
+                <button class="button submit is-link is-rounded">Submit</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<nav class="level">
+    <div class="level-item has-text-centered">
+        <div class="card">
+            <header class="card-header">
+                <p class="card-header-title is-centered">
+                    Burgers Ordered
+                </p>
+            </header>
+
+            <div class="card-content is-centered">
+                <div class="content present">
+                    <ul style="list-style-type: none">
+                        {{#each burgers}}
+                            {{#if devour}}
+                                {{> burgers/burger-block devour=false}}
+                            {{/if}}
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<nav class="level">
+    <div class="level-item has-text-centered">
+        <div class="card">
+            <header class="card-header">
+                <p class="card-header-title is-centered">
+                    Burgers Devoured
+                </p>
+            </header>
+
+            <div class="card-content is-centered">
+                <div class="content past">
+                    <ul style="list-style-type: none">
+                        {{#each burgers}}
+                            {{#unless devour}}
+                                {{> burgers/burger-block devour=true}}
+                            {{/unless}}
+                        {{/each}}
+                    </ul style="list-style-type: none">
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
